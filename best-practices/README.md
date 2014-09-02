@@ -52,12 +52,9 @@ Ruby Gems
 * Use [Appraisal] to test the gem against multiple versions of gem dependencies
   (such as Rails in a Rails engine).
 * Use [Bundler] to manage the gem's dependencies.
-* Use [Travis CI] for Continuous Integration, indicators showing whether GitHub
-  pull requests can be merged, and to test against multiple Ruby versions.
 
 [Appraisal]: https://github.com/thoughtbot/appraisal
 [Bundler]: http://bundler.io
-[Travis CI]: http://travis-ci.org
 
 Rails
 -----
@@ -88,7 +85,6 @@ Rails
 * Validate the associated `belongs_to` object (`user`), not the database column
   (`user_id`).
 * Use `db/seeds.rb` for data that is required in all environments.
-* Use `dev:prime` rake task for development environment seed data.
 * Prefer `cookies.signed` over `cookies` to [prevent tampering].
 * Prefer `Time.current` over `Time.now`
 * Prefer `Date.current` over `Date.today`
@@ -201,14 +197,6 @@ Browsers
 * Don't support clients without Javascript.
 * Don't support IE6 or IE7.
 
-Objective-C
------------
-
-* Setup new projects using [Liftoff](https://github.com/thoughtbot/liftoff) and
-  follow provided directory structure.
-* Prefer categories on `Foundation` classes to helper methods.
-* Prefer string constants to literals when providing keys or key paths to methods.
-
 Shell
 -----
 
@@ -262,9 +250,3 @@ In addition to Shell best practices,
 * Prefer `[[` over `test` or `[`.
 * Prefer process substitution over a pipe in `while read` loops.
 * Use `((` or `let`, not `$((` when you don't need the result
-
-Haskell
--------
-
-* Avoid partial functions (`head`, `read`, etc).
-* Compile code with `-Wall -Werror`.

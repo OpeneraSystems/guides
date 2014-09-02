@@ -3,10 +3,9 @@ Style
 
 A guide for programming in style.
 
-Use [Hound] to automatically review your code and comment on GitHub pull
-requests for violations of the Ruby portions of this style guide.
+Use [Rubocop] to review your code for Ruby and Rails style violations.
 
-[Hound]: https://houndci.com
+[Rubocop]: https://github.com/bbatsov/rubocop
 
 Git
 ---
@@ -35,8 +34,7 @@ Formatting
 * Indent continued lines two spaces.
 * Indent private methods equal to public methods.
 * If you break up a chain of method invocations, keep each method invocation on
-  its own line. Place the `.` at the end of each line, except the last.
-  [Example][dot guideline example].
+  its own line. Place the `.` at the start of each line.
 * Use 2 space indentation (no tabs).
 * Use an empty line between methods.
 * Use empty lines around multi-line blocks.
@@ -46,9 +44,8 @@ Formatting
 * Use [Unix-style line endings] (`\n`).
 * Use [uppercase for SQL key words and lowercase for SQL identifiers].
 
-[dot guideline example]: /style/samples/ruby.rb#L11
-[uppercase for SQL key words and lowercase for SQL identifiers]: http://www.postgresql.org/docs/9.2/static/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS
 [Unix-style line endings]: http://unix.stackexchange.com/questions/23903/should-i-end-my-text-script-files-with-a-newline
+[uppercase for SQL key words and lowercase for SQL identifiers]: http://www.postgresql.org/docs/9.2/static/sql-syntax-lexical.html#SQL-SYNTAX-IDENTIFIERS
 
 Naming
 ------
@@ -141,21 +138,10 @@ CoffeeScript
 * Prefer `@` over `this` for referencing instance properties.
 * Prefer double quotes.
 
-Backbone
---------
-
-[Sample](samples/backbone.coffee)
-
-* Organize all objects in one `window.App` namespace.
-* Name collections the plural version of the model.
-* Name models without a suffix.
-* Name the router `App.Router`.
-* Name views with a `View` suffix.
-
 Ruby
 ----
 
-[Sample](samples/ruby.rb)
+Follow the [community Ruby style guide](https://github.com/bbatsov/ruby-style-guide)
 
 * Avoid conditional modifiers (lines that end with conditionals).
 * Avoid multiple assignments per line (`one, two = 1, 2`).
@@ -184,16 +170,13 @@ Ruby
   methods, `SCREAMING_SNAKE_CASE` for constants.
 * Use `def self.method`, not `def Class.method` or `class << self`.
 * Use `def` with parentheses when there are arguments.
-* Don't use spaces after required keyword arguments. [Example][required kwargs]
+* Don't use spaces after required keyword arguments.
 * Use `each`, not `for`, for iteration.
 * Use a trailing comma after each item in a multi-line list, including the last
-  item. [Example][trailing comma example]
+  item.
 * Use heredocs for multi-line strings.
 * Prefer `protected` over `private` for non-public `attr_reader`s, `attr_writer`s,
   and `attr_accessor`s.
-
-[trailing comma example]: /style/samples/ruby.rb#L49
-[required kwargs]: /style/samples/ruby.rb#L16
 
 ERb
 ---
@@ -211,6 +194,8 @@ HTML
 
 Rails
 -----
+
+Follow the [community Ruby on Rails 4 style guide](https://github.com/bbatsov/rails-style-guide)
 
 * Avoid `member` and `collection` routes.
 * Use private instead of protected when defining controller methods.
@@ -321,52 +306,6 @@ Testing
 
 [Imperative mood]: http://en.wikipedia.org/wiki/Imperative_mood
 
-Objective-C
------------
-
-[Sample](samples/ObjectiveC.m)
-
-* Place `#import`s into the prefix header (`ProjectName-Prefix.pch`) only if
-  used in _many_ files.
-* Place `.xib` files under `Resources/Nibs` and their associated view files in
-  `Classes/Views`.
-* Order `#import` statements alphabetically.
-* Order `@class` directives alphabetically.
-* Order `@property` modifiers: memory management, atomicity, writability.
-* Leave out `@property` modifiers unless needed, `nonatomic` is the only one
-  needed in most cases except connecting views with IB in which case `weak` may
-  also be needed.
-* Prefer `@class` to `#import` when referring to external classes in a public
-  `@interface`.
-* Prefer `@property` to declaring instance variables.
-* Prefix class names with a 2 or 3 letter project acronym.
-* Prefix string constants being used as keys with 'k'.
-* Remove `#import` statements for `Foundation` and `UIKit` in new project
-  templates.
-* Separate methods by function using `#pragma mark - <Section Name>`
-* Separate sections into subsections using `#pragma mark <Subsection Name>`
-* Use `@[arrayObject]`, `@{@"key" : value}`, `@(YES or NO)`, and `@5.0`
-  literals.
-* Use `@interface ClassName ()` to declare private properties.
-* Use `lowerCamelCase` for method names.
-* Use `NSAssert` in methods that require the presence of certain arguments.
-* Write methods using the happy path. Indent the exceptional cases. Keep the
-  optimal case in the left-most column.
-* Prefer `enumerateObjectsUsingBlock:` when looping through arrays.
-* Always use braces with control and loop blocks unless it can easily fit on
-  one line.
-* Place opening brace for control and loop blocks on same line.
-* Prefer `NSInteger`, `CGFloat`, and similar macros over `int`, `float`, and
-  other base types.
-* Prefer *Auto Layout* for view layouts and constraints.
-
-Python
-------
-
-* Follow [PEP 8].
-
-[PEP 8]: http://www.python.org/dev/peps/pep-0008/
-
 Shell
 -----
 
@@ -378,19 +317,3 @@ Shell
 * Use `snake_case` for variable names and `ALLCAPS` for environment variables.
 * Use single quotes for strings that don't contain escapes or variables.
 * Use two-space indentation.
-
-Haskell
--------
-
-* Break long expressions before operators or keywords.
-* Break long type signatures between arguments.
-* Order imports in three sections, separating each by a blank line:
-  [standard libraries], third-party libraries, application modules.
-  Within each section, alphabetize the imports and place qualified
-  imports last.
-* Use comma-first style exports, records, and lists.
-* Use four-space indentation except the `where` keyword which is
-  indented two spaces. [Example].
-
-[standard libraries]: http://www.haskell.org/ghc/docs/latest/html/libraries/index.html
-[Example]: /style/samples/haskell.hs#L41
