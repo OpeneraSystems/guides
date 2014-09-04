@@ -78,8 +78,7 @@ web interface or in the project's chat room.
 For changes which they can make themselves, they check out the branch.
 
     git checkout <branch-name>
-    ./bin/setup
-    git diff staging/master..HEAD
+    git diff origin/master..HEAD
 
 They make small changes right in the branch, test the feature on their machine,
 run tests, commit, and push.
